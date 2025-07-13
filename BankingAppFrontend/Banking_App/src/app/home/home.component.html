@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <div class="container-fluid d-flex justify-content-between align-items-center w-100">
+
+    <!-- Left side: Navigation links -->
+    <ul class="navbar-nav d-flex flex-row">
+      <li class="nav-item me-3">
+        <a [routerLink]="['/Home']" routerLinkActive="active" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item me-3">
+        <a routerLink="accounts" routerLinkActive="active" class="nav-link">Account </a>
+      </li>
+      <li class="nav-item me-3" *ngIf="username=='mickeyroxx72@gmail.com'">
+        <a routerLink="create-account" routerLinkActive="active" class="nav-link">Add Account</a>
+      </li>
+    </ul>
+
+    <!-- Right side: Session timer and profile dropdown -->
+    <div class="d-flex align-items-center ms-auto">
+      <div class="text-white me-3 fw-bold">
+        Session expires in: {{ timeRemaining }}
+      </div> &nbsp;&nbsp;
+
+      <!-- Profile Dropdown -->
+      <div class="dropdown">
+        <button class="btn btn-outline-light dropdown-toggle d-flex align-items-center" type="button"
+          id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <img *ngIf="username=='mickeyroxx72@gmail.com'" src="admin1.jpg" alt="User Avatar" class="rounded-circle" width="60"
+            height="60" />
+          <img *ngIf="username!='mickeyroxx72@gmail.com'" src="user.png" alt="User Avatar" class="rounded-circle" width="50"
+            height="50" />
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+          <li><a class="dropdown-item" (click)="Details()">Profile</a></li>
+          <li><a class="dropdown-item" (click)="navigatechangepassword()">Change-Password</a></li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="card shadow mx-auto mt-5 position-relative" style="max-width: 500px;" *ngIf="showDetails">
+  <!-- Close Button in Top-Right -->
+  <button class="btn-close position-absolute text-danger" style="top: 10px; right: 10px;" (click)="Details()"
+    aria-label="Close"> &times;</button>
+
+  <div class="card-body">
+    <h5 class="card-title text-primary">User Details</h5>
+    <p><strong>Username:</strong> {{ userdetails.accountHolderName }}</p>
+    <p><strong>Email:</strong> {{ userdetails.email }}</p>
+    <p><strong>Phone Number:</strong> {{ userdetails.phoneNumber }}</p>
+    <p><strong>Role:</strong> {{ userdetails.role }}</p>
+  </div>
+</div>
+<br><br>
+
+
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<div class="logo-container">
+  <img src="bank4.svg" class="App-logo" alt="rotating circle" />
+  <img src="Bank2.png" class="bank-overlay" alt="bank icon" />
+</div>

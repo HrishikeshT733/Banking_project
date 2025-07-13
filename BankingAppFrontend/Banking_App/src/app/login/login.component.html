@@ -1,0 +1,114 @@
+
+
+<div class="background">
+  <img src="bank.jpg" alt="bank" class="background-image" />
+
+  <div class="login">
+    <h2>Login</h2>
+
+    
+    <form *ngIf="!otpStep" (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
+ 
+      <div>
+        <label for="username">Username:</label><br />
+        <input type="text" id="username" name="username" [(ngModel)]="username" #usernameField="ngModel" required />
+        <div class="error" *ngIf="usernameField.invalid && usernameField.touched">
+          Username is required.
+        </div>
+      </div>
+
+     
+      <div>
+        <label for="password">Password:</label><br />
+        <input type="password" id="password" name="password" [(ngModel)]="password" #passwordField="ngModel" required
+          minlength="4" />
+        <div class="error" *ngIf="passwordField.invalid && passwordField.touched">
+          <span *ngIf="passwordField.errors?.['required']">Password is required.</span>
+          <span *ngIf="passwordField.errors?.['minlength']">Password must be at least 4 characters.</span>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    </form>
+
+    <form *ngIf="otpStep" (ngSubmit)="verifyOtp()" #otpForm="ngForm">
+      <p class="message success">OTP sent to your registered mobile number.</p>
+
+      <div>
+        <label for="otp">Enter OTP:</label><br />
+        <input type="text" id="otp" name="otp" [(ngModel)]="otp" #otpField="ngModel" required />
+        <div class="error" *ngIf="otpField.invalid && otpField.touched">
+          OTP is required.
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="otpForm.invalid">Submit OTP</button>
+    </form>
+
+    <div *ngIf="loginMessage" [ngClass]="['message', loginClass]">
+      {{ loginMessage }}
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+<!-- <div class="background">
+  <img src="bank.jpg" alt="bank" class="background-image" />
+
+  <div class="login">
+    <h2>Login</h2>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
+    
+      <div>
+        <label for="username">Username:</label><br />
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="username"
+          #usernameField="ngModel"
+          required
+        />
+        <div class="error" *ngIf="usernameField.invalid && usernameField.touched">
+          Username is required.
+        </div>
+      </div>
+
+  
+      <div>
+        <label for="password">Password:</label><br />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          #passwordField="ngModel"
+          required
+          minlength="4"
+        />
+        <div class="error" *ngIf="passwordField.invalid && passwordField.touched">
+          <span *ngIf="passwordField.errors?.['required']">Password is required.</span>
+          <span *ngIf="passwordField.errors?.['minlength']">Password must be at least 4 characters.</span>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    </form>
+
+ 
+    <div *ngIf="loginMessage" [ngClass]="['message', loginClass]">
+      {{ loginMessage }}
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet> -->
+

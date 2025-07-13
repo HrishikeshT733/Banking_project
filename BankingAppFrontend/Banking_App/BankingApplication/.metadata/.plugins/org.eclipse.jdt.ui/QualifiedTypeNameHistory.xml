@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.BankingAPPSpringBoot.BankingApplication.repository.TransactionRepository"/>
+    <fullyQualifiedTypeName name="com.BankingAPPSpringBoot.BankingApplication.repository.UserRepository"/>
+    <fullyQualifiedTypeName name="com.BankingAPPSpringBoot.BankingApplication.entity.Role"/>
+</qualifiedTypeNameHistroy>

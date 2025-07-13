@@ -1,0 +1,67 @@
+<!-- 
+
+
+<table >
+  <thead>
+    <tr>
+      <th>Transaction ID</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Timestamp</th>
+      <th>Account ID</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="transactions && transactions.length > 0; else noTransactions">
+    <tr *ngFor="let t of transactions">
+      <td>{{ t.id }}</td>
+      <td>{{ t.type }}</td>
+      <td>{{ t.amount }}</td>
+      <td>{{ t.timestamp }}</td>
+      <td>{{ t.accountId }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<ng-template #noTransactions>
+  <h3 style="text-align: center;">No Transactions</h3>
+</ng-template>  -->
+
+
+<!-- Date Range Inputs -->
+<div class="d-flex justify-content-center my-3">
+  <label class="me-2">From:</label>
+  <input type="date" [(ngModel)]="fromDate" class="form-control me-3" style="width: 200px;">
+  &nbsp;&nbsp;
+  <label class="me-2">To:</label>
+  <input type="date" [(ngModel)]="toDate" class="form-control me-3" style="width: 200px;">
+  
+  <button class="btn btn-primary" (click)="filterTransactions()">Filter</button>
+</div>
+
+<!-- Transactions Table -->
+<table class="table table-striped" *ngIf="filteredTransactions.length > 0; else noTransactions">
+  <thead class="table-light">
+    <tr>
+      <th>Transaction ID</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Timestamp</th>
+      <th>Account ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of filteredTransactions">
+      <td>{{ t.id }}</td>
+      <td>{{ t.type }}</td>
+      <td>{{ t.amount }}</td>
+      <td>{{ t.timestamp | date:'dd/MM/yyyy, h:mm a' }}</td>
+      <td>{{ t.accountId }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- No Transactions Message -->
+<ng-template #noTransactions>
+  <h3 style="text-align: center;">No Transactions</h3>
+</ng-template>

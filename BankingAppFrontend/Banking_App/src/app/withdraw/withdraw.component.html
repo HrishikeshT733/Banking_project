@@ -1,0 +1,30 @@
+
+
+<div class="col-md-8 offset-md-2">
+  <h1 class="text-center">Withdraw Amount</h1>
+
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <form (ngSubmit)="onSubmit()">
+    <!-- Show current balance -->
+    <div class="form-group">
+      <label>Current Balance</label>
+      <input type="text" class="form-control" [value]="account.balance" disabled />
+    </div>
+
+    <!-- Withdraw input -->
+    <div class="form-group">
+      <label>Withdraw Amount</label>
+      <input type="number" class="form-control" [(ngModel)]="withdrawAmount" name="withdrawAmount"
+        placeholder="Enter amount to withdraw" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
