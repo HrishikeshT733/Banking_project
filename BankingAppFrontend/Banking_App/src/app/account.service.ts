@@ -36,6 +36,12 @@ Withdraw(id:number,amount:number):Observable<Account>{
   return this.httpClient.put<Account>(`${this.baseUrl}/${id}/withdraw`, request);
 
 }
+transferAmount(id:number,amount:number,toId:number):Observable<Account>{
+  const request={ amount ,toId};
+ 
+  return this.httpClient.put<Account>(`${this.baseUrl}/${id}/transfer`, request);
+
+}
 
 delete(id:number):Observable<Account>{
  

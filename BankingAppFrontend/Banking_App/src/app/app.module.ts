@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { StatementComponent } from './statement/statement.component';
 import { JwtInterceptor } from './JwtInterceptor';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { TransfermoneyComponent } from './transfermoney/transfermoney.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     LoginComponent,
     HomeComponent,
     StatementComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    TransfermoneyComponent
   ],
   imports: [
     BrowserModule,

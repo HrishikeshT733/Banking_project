@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { StatementComponent } from './statement/statement.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { TransfermoneyComponent } from './transfermoney/transfermoney.component';
 const routes: Routes = [
   // {path:'Home/accounts',component:AccountListComponent},
   // {path:'Home/create-account',component:CreateAccountComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: 'create-account', component: CreateAccountComponent },
       { path: 'deposit/:id', component: DepositComponent },
       { path: 'withdraw/:id', component: WithdrawComponent },
+      { path: 'transfer/:id', component: TransfermoneyComponent },
       { path: 'account-details/:id', component: AccountDetailsComponent },
       { path: 'statement/:id', component: StatementComponent },
       { path: 'change-password', component: ChangePasswordComponent },

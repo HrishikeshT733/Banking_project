@@ -1,0 +1,50 @@
+
+
+<div class="col-md-8 offset-md-3">
+    <h1 class="text-center">Deposit</h1>
+    <div *ngIf="successMessage" class="alert alert-success">
+        {{successMessage}}
+
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{errorMessage}}
+
+    </div>
+
+
+
+    <form (ngSubmit)="onSubmit()">
+
+
+        <div>
+            <label>
+                Balance
+
+            </label>
+            <input type="text" id="balance" class="form-control"  name="account"
+                [ngModel]="account.balance" readonly/>
+
+        </div>
+          <div>
+            <label>
+                Amount
+
+            </label>
+            <input type="text" id="amount" class="form-control" placeholder="Enter Amount" name="amount"
+                [(ngModel)]="amount" />
+
+        </div>
+           <div>
+            <label>
+                Enter Account Number to Transfer
+
+            </label>
+            <input type="text" id="toId" class="form-control" placeholder="Enter Account No" name="toId"
+                [(ngModel)]="toId" />
+
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+
+
+    </form>
+</div>

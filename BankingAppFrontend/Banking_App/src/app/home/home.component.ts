@@ -24,10 +24,14 @@ constructor(private authService: AuthService,private router:Router,private accou
     this.username = this.authService.getUsername();
    this.accountService.getAllAccounts().subscribe(data => {
       this.accounts = data;
-       this.userdetails=this.accounts[0];
-   
+       this.accounts.forEach((accountTemp)=>{
+    if(accountTemp.email===this.username){
+       this.userdetails=accountTemp;
+    }
 
+   });
   });
+  
  
     
   this.startTimer();

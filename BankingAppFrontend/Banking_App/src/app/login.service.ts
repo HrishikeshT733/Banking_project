@@ -17,8 +17,8 @@ export class AuthService {
 login(username: string, password: string): Observable<LoginResponse> {
   return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { username, password });
 }
-  verifyOtp(phoneNumber:string,otp:string){
-return this.http.post<{ token: string }>(`${this.apiUrl}/verify-otp`, { phoneNumber, otp });
+  verifyOtp(phone:string,code:string){
+return this.http.post<{ token: string }>(`${this.apiUrl}/verify-otp`, { phone, code });
   }
 
   storeToken(token: string) {
@@ -67,7 +67,7 @@ startTokenTimer(token: string) {
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    
      if (this.logoutTimer) {
       clearTimeout(this.logoutTimer);
     }

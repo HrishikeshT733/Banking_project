@@ -13,12 +13,15 @@ import { Router } from '@angular/router';
 export class AccountListComponent {
 
   accounts: Account[] = [];
+  currentUser:Account=new Account();
+  tempAccounts:Account[]=[];
  username: string | null = '';
   constructor(private accountService: AccountService, private authService:AuthService,private router:Router) { }
 
   ngOnInit() {
     this.getAccounts();
    this.username= this.authService.getUsername();
+//on ngOnInit foreach gets triggered first thats why i have added foreach() logic in method getaccounts()
 
   }
 visibleBalances = new Set<number>();
@@ -34,12 +37,33 @@ toggleBalance(accountId: number) {
 isBalanceVisible(accountId: number): boolean {
   return this.visibleBalances.has(accountId);
 }
+getaccountlist(){
+ this.accounts.forEach((accountTemp)=>{
+if(accountTemp.email===this.username){
+  this.currentUser=accountTemp;
+}
+   });
+   if(this.currentUser.role==='USER'){
+  this.accounts.forEach((accountTemp)=>{
+    if(accountTemp.id===this.currentUser.id && accountTemp.role!=='ADMIN'){
+    this.tempAccounts.push(accountTemp);
+    }
+  });
+}else if(this.currentUser.role==='ADMIN'){
+     this.accounts.forEach((accountTemp)=>{
+    if(accountTemp.id!==this.currentUser.id){
+    this.tempAccounts.push(accountTemp);
+    }
+  });
+}
 
+}
   getAccounts() {
     this.accountService.getAllAccounts().subscribe(data => {
       this.accounts = data;
-
-    })
+      this.getaccountlist();
+    });
+   
   }
  
   deposit(id: number) {
@@ -49,10 +73,13 @@ isBalanceVisible(accountId: number): boolean {
   withdraw(id: number) {
     this.router.navigate(['/Home/withdraw', id])
   }
+   transfer(id: number) {
+    this.router.navigate(['/Home/transfer', id])
+  }
 
   delete(id: number) {
     this.accountService.delete(id).subscribe(data => {
-      
+      window.location.reload();
       this.getAccounts();
    
        

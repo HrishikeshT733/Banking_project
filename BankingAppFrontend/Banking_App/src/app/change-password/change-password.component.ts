@@ -23,7 +23,7 @@ export class ChangePasswordComponent {
 
   }
   onChangePassword(): void {
-    this.http.post('http://localhost:8080/api/auth/login/change-password', this.changePasswordRequest)
+    this.http.put('http://localhost:8080/api/auth/login/change-password', this.changePasswordRequest)
       .subscribe({
         next: (response) => {
         

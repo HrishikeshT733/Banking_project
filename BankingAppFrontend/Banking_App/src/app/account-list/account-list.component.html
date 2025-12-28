@@ -9,8 +9,8 @@
     </tr>
   </thead>
   <tbody>
-   <ng-container *ngFor="let account of accounts">
-  <tr *ngIf="(account.email !== 'mickeyroxx72@gmail.com')">
+   <ng-container *ngFor="let account of tempAccounts">
+  <tr>
     <td>{{ account.id }}</td>
     <td>{{ account.accountHolderName }}</td>
  <td>
@@ -21,14 +21,16 @@
 
     <td><button (click)="deposit(account.id)" class="btn btn-info">Deposit</button></td>
     <td><button (click)="withdraw(account.id)" class="btn btn-info">Withdraw</button></td>
+        <td><button (click)="transfer(account.id)" class="btn btn-info">Transfer</button></td>
     
 
-    <td *ngIf="username === 'mickeyroxx72@gmail.com'">
+    <td *ngIf="currentUser.role === 'ADMIN'">
       <button (click)="delete(account.id)" class="btn btn-danger">Delete</button>
     </td>
     
     <td><button (click)="view(account.id)" class="btn btn-info">View</button></td>
     <td><button (click)="statement(account.id)" class="btn btn-info">Statement</button></td>
+   
   </tr>
 </ng-container>
   </tbody>
